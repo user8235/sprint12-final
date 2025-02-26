@@ -5,12 +5,8 @@ WORKDIR /app
 COPY go.mod go.sum ./
 RUN go mod download
 
-COPY . .
-RUN go build -o sprint12-final .
+COPY . ./
 
-FROM alpine:latest
-
-WORKDIR /root/
-COPY --from=builder /app/sprint12-final .
+RUN CGO_ENABLED=0 GOOS=linux go build -o sprint12-final . 
 
 ENTRYPOINT ["./sprint12-final"]
