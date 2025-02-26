@@ -6,6 +6,8 @@ name: Go
 on:
   push:
     branches: [ '**' ]
+    tags:
+      - 'v*' # Запускается при добавлении тегов, начинающихся с 'v'
   pull_request:
     branches: [ '**' ]
 
